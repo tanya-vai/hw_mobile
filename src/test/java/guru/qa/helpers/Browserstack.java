@@ -1,5 +1,6 @@
 package guru.qa.helpers;
 
+import guru.qa.config.BrowserstackMobileDriver;
 import io.qameta.allure.restassured.AllureRestAssured;
 
 import static io.restassured.RestAssured.given;
@@ -13,7 +14,7 @@ public class Browserstack {
         return given()
                 .filter(new AllureRestAssured())
                 .log().all()
-                .auth().basic("qaguru_B5xciN", "TzFxj7ss7siMKTxUURLy")
+                .auth().basic(BrowserstackMobileDriver.CONFIG.browserstackUser(), BrowserstackMobileDriver.CONFIG.browserstackKey())
                 .when()
                 .get(url)
                 .then()
